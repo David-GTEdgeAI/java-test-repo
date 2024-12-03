@@ -14,12 +14,13 @@ import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(TaskController.class)
 public class TaskControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -35,7 +36,7 @@ public class TaskControllerTest {
         given(taskService.getTaskById(1L)).willReturn(Optional.of(task));
 
         mockMvc.perform(get("/api/tasks/1"))
-               .andExpect(status().isOk())
-               .andExpect(jsonPath("$.title").value("Test Task"));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("Test Task"));
     }
 }
