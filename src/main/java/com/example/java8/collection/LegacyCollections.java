@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class LegacyCollections {
     // Using Java 8's Hashtable - largely replaced by ConcurrentHashMap in later versions
     private final Hashtable<String, Object> legacyHashtable = new Hashtable<>();
-    
+
     // Java 8 specific ConcurrentHashMap methods
     private final ConcurrentHashMap<String, String> concurrentMap = new ConcurrentHashMap<>();
 
