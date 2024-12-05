@@ -8,8 +8,9 @@ import java.util.stream.Collectors;
 
 public class ParallelStreamProcessor {
     public void demonstrateParallelStreams() {
-        List<String> items = Arrays.asList("a1", "b2", "c3", "d4", "e5");
+        var items = List.of("a1", "b2", "c3", "d4", "e5");
         
+        // Java 17 parallel stream with specific collector
         ConcurrentMap<String, String> result = items.parallelStream()
             .filter(s -> s.length() > 0)
             .collect(Collectors.toConcurrentMap(
@@ -18,6 +19,7 @@ public class ParallelStreamProcessor {
                 (v1, v2) -> v1 + "," + v2
             ));
         
+        // Java 17 specific parallel reduction
         Integer sum = items.parallelStream()
             .mapToInt(String::length)
             .reduce(0, 
@@ -25,6 +27,7 @@ public class ParallelStreamProcessor {
                 Integer::sum
             );
             
+        // Java 17 specific parallel grouping
         Map<Integer, List<String>> grouped = items.parallelStream()
             .collect(Collectors.groupingByConcurrent(
                 String::length,
@@ -33,16 +36,18 @@ public class ParallelStreamProcessor {
     }
 
     public void demonstrateParallelOperations() {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        var numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
+        // Java 17 parallel stream with unordered processing
         numbers.parallelStream()
             .unordered()
             .forEach(System.out::println);
 
+        // Java 17 parallel stream with custom thread pool
         numbers.parallelStream()
             .filter(n -> n %25 2 == 0)
             .forEach(n -> {
-                Thread currentThread = Thread.currentThread();
+                var currentThread = Thread.currentThread();
                 System.out.println("Processing " + n + " in thread " + currentThread.getName());
             });
     }
