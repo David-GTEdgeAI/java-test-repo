@@ -13,9 +13,9 @@ public class TypeAnnotationDemo<@NotNull T> {
     private @NotNull List<@NotNull String> strings;
 
     public void processArray(@NotNull String @NotNull [] strings) {
-        var local = strings[0];
+        String local = strings[0];
 
-        var value = local.toLowerCase();
+        String value = (@NotNull String) local.toLowerCase();
 
         if (value instanceof String str) {
             System.out.println(str);
@@ -24,8 +24,8 @@ public class TypeAnnotationDemo<@NotNull T> {
 
     public void exceptionExample() throws @NotNull Exception {
         try {
-            var obj = new Object();
-        } catch (Exception e) {
+            Object obj = new @Immutable Object();
+        } catch (@NotNull Exception e) {
             throw e;
         }
     }
