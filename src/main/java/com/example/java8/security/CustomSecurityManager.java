@@ -2,6 +2,7 @@ package com.example.java8.security;
 
 import java.security.Permission;
 
+@Deprecated(since = "17", forRemoval = true)
 public class CustomSecurityManager extends SecurityManager {
     @Override
     public void checkPermission(Permission perm) {
