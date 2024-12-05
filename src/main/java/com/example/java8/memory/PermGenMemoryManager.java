@@ -6,12 +6,12 @@ import java.util.List;
 
 public class PermGenMemoryManager {
     public void analyzePermGenSpace() {
-        List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
+        var memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
 
-        for (MemoryPoolMXBean memoryPool : memoryPoolMXBeans) {
+        for (var memoryPool : memoryPoolMXBeans) {
             if (memoryPool.getName().contains("Metaspace")) {
-                long used = memoryPool.getUsage().getUsed();
-                long max = memoryPool.getUsage().getMax();
+                var used = memoryPool.getUsage().getUsed();
+                var max = memoryPool.getUsage().getMax();
                 System.out.println("Metaspace Usage: " + used + "/" + max + " bytes");
             }
         }
