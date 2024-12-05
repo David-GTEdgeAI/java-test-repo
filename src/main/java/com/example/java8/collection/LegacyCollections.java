@@ -15,7 +15,7 @@ public class LegacyCollections {
     public void demonstrateJava8Collections() {
         // Java 8 specific computeIfPresent implementation
         concurrentMap.computeIfPresent("key", (k, v) -> v + "_updated");
-        
+
         // Java 8 specific reduce operation
         concurrentMap.reduce(1, (k, v) -> k + v.length(),
                            (v1, v2) -> v1 + v2);
