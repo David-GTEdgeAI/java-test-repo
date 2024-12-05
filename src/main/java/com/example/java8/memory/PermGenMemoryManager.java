@@ -5,7 +5,7 @@ import java.lang.management.MemoryPoolMXBean;
 import java.util.List;
 
 public class PermGenMemoryManager {
-    // Metaspace replaced PermGen in Java 8+
+    // Metaspace replaced PermGen in Java 9+
     public void analyzePermGenSpace() {
         var memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
 
