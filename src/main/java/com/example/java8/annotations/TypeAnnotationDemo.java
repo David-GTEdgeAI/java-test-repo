@@ -3,39 +3,29 @@ package com.example.java8.annotations;
 import java.lang.annotation.*;
 import java.util.List;
 
-// Type annotations - new in Java 8
-@Target(
-{ElementType.TYPE_USE, ElementType.TYPE_PARAMETER}
-)
+@Target({ElementType.TYPE_USE, ElementType.TYPE_PARAMETER})
 @interface NotNull {}
 
-@Target(
-{ElementType.TYPE_USE}
-)
+@Target({ElementType.TYPE_USE})
 @interface Immutable {}
 
 public class TypeAnnotationDemo<@NotNull T> {
-    // Java 8 type annotations on type usage
     private @NotNull List<@NotNull String> strings;
 
     public void processArray(@NotNull String @NotNull [] strings) {
-        @NotNull String local = strings[0];
+        var local = strings[0];
 
-        // Type annotation on type cast
-        @NotNull String value = (String) local.toLowerCase();
+        var value = local.toLowerCase();
 
-        // Type annotation on instanceof
-        if (value instanceof @NotNull String) {
-            System.out.println(value);
+        if (value instanceof String str) {
+            System.out.println(str);
         }
     }
 
-    // Type annotation on exception
     public void exceptionExample() throws @NotNull Exception {
         try {
-            // Type annotation on object creation
-            @Immutable Object obj = new @Immutable Object();
-        } catch (@NotNull Exception e) {
+            var obj = new Object();
+        } catch (Exception e) {
             throw e;
         }
     }
