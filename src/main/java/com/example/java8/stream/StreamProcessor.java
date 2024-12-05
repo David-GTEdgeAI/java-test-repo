@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class StreamProcessor {
     public void demonstrateJava8Streams() {
-        var items = Arrays.asList("a", "b", "c");
+        List<String> items = Arrays.asList("a", "b", "c");
         
         // Java 17 style stream processing
         Stream<String> stream = items.stream()
@@ -16,6 +16,6 @@ public class StreamProcessor {
             .distinct();
             
         // Java 17 specific collect operation
-        String result = stream.toList().toString();
+        String result = stream.collect(Collectors.joining(", "));
     }
 }
