@@ -15,14 +15,14 @@ public class TypeAnnotationDemo<@NotNull T> {
     private @NotNull List<@NotNull String> strings;
 
     public void processArray(@NotNull String @NotNull [] strings) {
-        @NotNull String local = strings[0];
+        var local = strings[0];
 
         // Type annotation on type cast
-        @NotNull String value = (@NotNull String) local.toLowerCase();
+        var value = (@NotNull String) local.toLowerCase();
 
         // Type annotation on instanceof
-        if (value instanceof @NotNull String) {
-            System.out.println(value);
+        if (local instanceof @NotNull String value2) {
+            System.out.println(value2);
         }
     }
 
@@ -30,7 +30,7 @@ public class TypeAnnotationDemo<@NotNull T> {
     public void exceptionExample() throws @NotNull Exception {
         try {
             // Type annotation on object creation
-            @Immutable Object obj = new @Immutable Object();
+            var obj = new @Immutable Object();
         } catch (@NotNull Exception e) {
             throw e;
         }
