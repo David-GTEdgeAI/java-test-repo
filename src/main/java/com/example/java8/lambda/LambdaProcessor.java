@@ -16,7 +16,7 @@ public class LambdaProcessor {
     private final Function<String, Integer> parser = Integer::parseInt;
 
     public void processWithLambda() {
-        final String prefix = "processed_";
+        var prefix = "processed_";
         Callable<String> callable = () -> prefix + "result";
         
         Supplier<StringBuilder> builderSupplier = StringBuilder::new;
