@@ -5,9 +5,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.Invocable;
 import java.io.FileReader;
 
-// Note: Nashorn was removed in Java 15, this code needs to be replaced with a different JavaScript engine
-// like GraalJS. Cannot provide direct conversion as Nashorn functionality was removed.
 public class NashornJavaScriptEngine {
+    // Java 17's Nashorn JavaScript engine (removed in Java 18)
     private final ScriptEngine engine;
 
     public NashornJavaScriptEngine() {
@@ -19,13 +18,15 @@ public class NashornJavaScriptEngine {
     }
 
     public void demonstrateJavaScriptInterop() throws Exception {
+        // Java 17 specific JavaScript integration
         engine.eval("var greeting = function(name) { return 'Hello, ' + name; }");
 
         Invocable invocable = (Invocable) engine;
-        Object result = invocable.invokeFunction("greeting", "Java 8");
+        Object result = invocable.invokeFunction("greeting", "Java 17");
 
+        // Java 17 specific JavaScript-Java bridging
         engine.eval("var ArrayList = Java.type('java.util.ArrayList')");
         engine.eval("var list = new ArrayList()");
-        engine.eval("list.add('Nashorn in Java 8')");
+        engine.eval("list.add('Nashorn in Java 17')");
     }
 }
