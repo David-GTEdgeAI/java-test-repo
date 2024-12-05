@@ -4,10 +4,14 @@ import java.lang.annotation.*;
 import java.util.List;
 
 // Type annotations - new in Java 8
-@Target({ElementType.TYPE_USE, ElementType.TYPE_PARAMETER})
+@Target(
+{ElementType.TYPE_USE, ElementType.TYPE_PARAMETER}
+)
 @interface NotNull {}
 
-@Target({ElementType.TYPE_USE})
+@Target(
+{ElementType.TYPE_USE}
+)
 @interface Immutable {}
 
 public class TypeAnnotationDemo<@NotNull T> {
@@ -15,14 +19,14 @@ public class TypeAnnotationDemo<@NotNull T> {
     private @NotNull List<@NotNull String> strings;
 
     public void processArray(@NotNull String @NotNull [] strings) {
-        var local = strings[0];
+        @NotNull String local = strings[0];
 
         // Type annotation on type cast
-        var value = (@NotNull String) local.toLowerCase();
+        @NotNull String value = (String) local.toLowerCase();
 
         // Type annotation on instanceof
-        if (local instanceof @NotNull String value2) {
-            System.out.println(value2);
+        if (value instanceof @NotNull String) {
+            System.out.println(value);
         }
     }
 
@@ -30,7 +34,7 @@ public class TypeAnnotationDemo<@NotNull T> {
     public void exceptionExample() throws @NotNull Exception {
         try {
             // Type annotation on object creation
-            var obj = new @Immutable Object();
+            @Immutable Object obj = new @Immutable Object();
         } catch (@NotNull Exception e) {
             throw e;
         }
