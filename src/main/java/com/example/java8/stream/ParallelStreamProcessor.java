@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class ParallelStreamProcessor {
     public void demonstrateParallelStreams() {
-        var items = List.of("a1", "b2", "c3", "d4", "e5");
+        List<String> items = Arrays.asList("a1", "b2", "c3", "d4", "e5");
         
         // Java 17 parallel stream with specific collector
         ConcurrentMap<String, String> result = items.parallelStream()
@@ -23,7 +23,6 @@ public class ParallelStreamProcessor {
         Integer sum = items.parallelStream()
             .mapToInt(String::length)
             .reduce(0, 
-                (a, b) -> a + b,
                 Integer::sum
             );
             
@@ -36,7 +35,7 @@ public class ParallelStreamProcessor {
     }
 
     public void demonstrateParallelOperations() {
-        var numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         // Java 17 parallel stream with unordered processing
         numbers.parallelStream()
@@ -47,7 +46,7 @@ public class ParallelStreamProcessor {
         numbers.parallelStream()
             .filter(n -> n %25 2 == 0)
             .forEach(n -> {
-                var currentThread = Thread.currentThread();
+                Thread currentThread = Thread.currentThread();
                 System.out.println("Processing " + n + " in thread " + currentThread.getName());
             });
     }
