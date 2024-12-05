@@ -12,7 +12,7 @@ public class ReflectionUtils {
     public List<String> getMethodParameterNames(Method method) {
         return Arrays.stream(method.getParameters())
             .map(Parameter::getName)
-            .collect(Collectors.toList());
+            .toList();  // Changed from collect(Collectors.toList())
     }
 
     // Java 8 specific method parameter reflection
