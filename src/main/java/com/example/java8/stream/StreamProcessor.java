@@ -7,13 +7,13 @@ import java.util.stream.Stream;
 
 public class StreamProcessor {
     public void demonstrateJava8Streams() {
-        List<String> items = List.of("a", "b", "c");
+        var items = List.of("a", "b", "c");
         
-        Stream<String> stream = items.stream()
+        var stream = items.stream()
             .filter(item -> item.length() > 0)
             .map(String::toUpperCase)
             .distinct();
             
-        String result = stream.collect(Collectors.joining(", "));
+        var result = stream.collect(Collectors.joining(", "));
     }
 }
