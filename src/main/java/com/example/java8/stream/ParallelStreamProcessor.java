@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 
 public class ParallelStreamProcessor {
     public void demonstrateParallelStreams() {
-        var items = List.of("a1", "b2", "c3", "d4", "e5");
+        List<String> items = List.of("a1", "b2", "c3", "d4", "e5");
         
-        var result = items.parallelStream()
+        ConcurrentMap<String, String> result = items.parallelStream()
             .filter(s -> s.length() > 0)
             .collect(Collectors.toConcurrentMap(
                 k -> k.substring(0, 1),
@@ -18,11 +18,14 @@ public class ParallelStreamProcessor {
                 (v1, v2) -> v1 + "," + v2
             ));
         
-        var sum = items.parallelStream()
+        int sum = items.parallelStream()
             .mapToInt(String::length)
-            .reduce(0, Integer::sum);
+            .reduce(0, 
+                (a, b) -> a + b,
+                Integer::sum
+            );
             
-        var grouped = items.parallelStream()
+        ConcurrentMap<Integer, List<String>> grouped = items.parallelStream()
             .collect(Collectors.groupingByConcurrent(
                 String::length,
                 Collectors.toList()
@@ -30,7 +33,7 @@ public class ParallelStreamProcessor {
     }
 
     public void demonstrateParallelOperations() {
-        var numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         numbers.parallelStream()
             .unordered()
@@ -39,7 +42,7 @@ public class ParallelStreamProcessor {
         numbers.parallelStream()
             .filter(n -> n %25 2 == 0)
             .forEach(n -> {
-                var currentThread = Thread.currentThread();
+                Thread currentThread = Thread.currentThread();
                 System.out.println("Processing " + n + " in thread " + currentThread.getName());
             });
     }
