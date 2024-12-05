@@ -9,7 +9,7 @@ public interface EnhancedFunction<T, R> extends Function<T, R> {
     }
 
     default <V> EnhancedFunction<T, V> andThenEnhanced(EnhancedFunction<R, V> after) {
-        return t -> after.apply(this.apply(t));
+        return (T t) -> after.apply(this.apply(t));
     }
 
     default EnhancedFunction<T, R> filter(Predicate<? super T> predicate) {
@@ -17,6 +17,6 @@ public interface EnhancedFunction<T, R> extends Function<T, R> {
     }
 
     default <V> EnhancedFunction<V, R> compose(Function<? super V, ? extends T> before) {
-        return v -> apply(before.apply(v));
+        return (V v) -> apply(before.apply(v));
     }
 }
