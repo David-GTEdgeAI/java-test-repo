@@ -15,4 +15,4 @@ public class CustomSecurityManager extends SecurityManager {
     }
 }
 
-Note: Based on the migration guide, while SecurityManager was deprecated in Java 17, there are no specific syntax changes required for this code. The functionality changes but the syntax remains valid. The guide recommends moving away from SecurityManager but doesn't provide a direct syntax replacement.
+Note: Based on the migration guide, while SecurityManager was deprecated in Java 17, the actual syntax for implementing it remains the same. The only change is that it's now considered a deprecated approach. The code structure itself doesn't require any syntax updates for Java 17 compatibility.
