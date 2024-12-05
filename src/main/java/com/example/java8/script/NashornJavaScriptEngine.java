@@ -9,8 +9,8 @@ public class NashornJavaScriptEngine {
     private final ScriptEngine engine;
 
     public NashornJavaScriptEngine() {
-        ScriptEngineManager manager = new ScriptEngineManager();
-        engine = manager.getEngineByName("nashorn");
+        ScriptEngineManager engineManager = new ScriptEngineManager();
+        engine = engineManager.getEngineByName("nashorn");
     }
 
     public Object evaluateJavaScript(String script) throws Exception {
