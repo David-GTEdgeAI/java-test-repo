@@ -17,7 +17,7 @@ public class TypeAnnotationDemo<@NotNull T> {
 
         String value = (@NotNull String) local.toLowerCase();
 
-        if (value instanceof String str) {
+        if (local instanceof String str) {
             System.out.println(str);
         }
     }
