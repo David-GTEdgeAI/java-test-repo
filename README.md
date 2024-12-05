@@ -28,10 +28,38 @@ mvn clean install
 
 ## Project Structure
 
-The project is organized by feature categories, with each package demonstrating specific Java 8 capabilities.
+The project is organized by feature categories, with each package demonstrating specific Java 8 capabilities:
+
+```
+java8-features/
+├── src/main/java/com/example/java8/
+    ├── annotations/      - Type annotation demonstrations
+    ├── collection/       - Legacy collection implementations
+    ├── datetime/         - Date/Time API examples
+    ├── interfaces/       - Default method demonstrations
+    ├── lambda/          - Lambda expression examples
+    ├── memory/          - PermGen memory management
+    ├── reflection/      - Enhanced reflection features
+    ├── script/          - Nashorn JavaScript engine
+    ├── security/        - Security manager implementation
+    └── stream/          - Stream and parallel stream processing
+```
 
 ## Important Notes
 
-- This project specifically targets Java 8 and won't compile with later Java versions without modifications
-- Some features (like PermGen settings) are specific to Java 8 JVM
-- Nashorn JavaScript engine demonstrations require Java 8
+1. Java Version Compatibility
+   - This project specifically targets Java 8
+   - Code won't compile with later Java versions without modifications
+
+2. JVM-Specific Features
+   - PermGen memory settings only work with Java 8 JVM
+   - Security Manager implementation is Java 8 specific
+   - Nashorn JavaScript engine requires Java 8
+
+3. Deprecated Features
+   - Some features demonstrated here are deprecated or removed in later Java versions
+   - Code serves as a reference for maintaining legacy Java 8 applications
+
+## License
+
+MIT License - See LICENSE file for details
