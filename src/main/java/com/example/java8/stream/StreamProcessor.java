@@ -16,6 +16,6 @@ public class StreamProcessor {
             .distinct();
             
         // Java 17 specific collect operation
-        String result = stream.collect(Collectors.joining(", "));
+        String result = stream.toList().toString();
     }
 }
