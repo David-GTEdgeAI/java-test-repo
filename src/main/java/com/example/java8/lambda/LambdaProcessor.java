@@ -8,7 +8,7 @@ interface Java8Function<T, R> {
     R apply(T t);
 
     default <V> Java8Function<T, V> andThen(Java8Function<R, V> after) {
-        return t -> after.apply(apply(t));
+        return (T t) -> after.apply(apply(t));
     }
 }
 
