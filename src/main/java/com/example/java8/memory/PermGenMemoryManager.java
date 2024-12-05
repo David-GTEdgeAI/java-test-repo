@@ -7,20 +7,21 @@ import java.util.List;
 public class PermGenMemoryManager {
     // Metaspace replaced PermGen in Java 8+
     public void analyzePermGenSpace() {
-        List<MemoryPoolMXBean> memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
+        var memoryPoolMXBeans = ManagementFactory.getMemoryPoolMXBeans();
 
-        for (MemoryPoolMXBean memoryPool : memoryPoolMXBeans) {
-            // Check for Metaspace instead of PermGen
+        for (var memoryPool : memoryPoolMXBeans) {
+            // Check for Metaspace (Java 9+ equivalent of PermGen)
             if (memoryPool.getName().contains("Metaspace")) {
-                long used = memoryPool.getUsage().getUsed();
-                long max = memoryPool.getUsage().getMax();
+                var used = memoryPool.getUsage().getUsed();
+                var max = memoryPool.getUsage().getMax();
                 System.out.println("Metaspace Usage: " + used + "/" + max + " bytes");
             }
         }
     }
 
+    // Java 17 specific memory settings
     public void configurePermGenSpace() {
-        // Modern JVM settings for Metaspace:
+        // These settings for Java 17:
         // -XX:MetaspaceSize=256m
         // -XX:MaxMetaspaceSize=512m
     }
