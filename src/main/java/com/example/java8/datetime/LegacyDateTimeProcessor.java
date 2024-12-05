@@ -7,23 +7,18 @@ import java.util.Date;
 
 public class LegacyDateTimeProcessor {
     public void demonstrateJava8DateTime() {
-        // Java 8 introduced java.time but still supported legacy Date
-        Date legacyDate = new Date();
+        var legacyDate = new Date();
         
-        // Converting between legacy and new APIs
-        Instant instant = legacyDate.toInstant();
-        Date newDate = Date.from(instant);
+        var instant = legacyDate.toInstant();
+        var newDate = Date.from(instant);
         
-        // Using Calendar (still supported in Java 8)
-        Calendar calendar = Calendar.getInstance();
+        var calendar = Calendar.getInstance();
         calendar.setTime(legacyDate);
         
-        // Java 8 specific date/time operations
-        LocalDateTime localDateTime = LocalDateTime.now();
-        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+        var localDateTime = LocalDateTime.now();
+        var zonedDateTime = ZonedDateTime.now();
         
-        // Java 8 specific formatting
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formatted = localDateTime.format(formatter);
+        var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        var formatted = localDateTime.format(formatter);
     }
 }
