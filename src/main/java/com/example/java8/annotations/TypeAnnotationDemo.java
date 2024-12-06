@@ -13,18 +13,18 @@ public class TypeAnnotationDemo<@NotNull T> {
     private @NotNull List<@NotNull String> strings;
 
     public void processArray(@NotNull String @NotNull [] strings) {
-        @NotNull String local = strings[0];
+        String local = strings[0];
 
-        @NotNull String value = (@NotNull String) local.toLowerCase();
+        String value = (@NotNull String) local.toLowerCase();
 
-        if (value instanceof @NotNull String str) {
+        if (local instanceof String str) {
             System.out.println(str);
         }
     }
 
     public void exceptionExample() throws @NotNull Exception {
         try {
-            @Immutable Object obj = new @Immutable Object();
+            Object obj = new @Immutable Object();
         } catch (@NotNull Exception e) {
             throw e;
         }
