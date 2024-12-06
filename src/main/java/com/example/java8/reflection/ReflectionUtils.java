@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ReflectionUtils {
     public List<String> getMethodParameterNames(Method method) {
@@ -14,12 +13,12 @@ public class ReflectionUtils {
     }
 
     public void analyzeParameters(Class<?> clazz) {
-        for (Method method : clazz.getDeclaredMethods()) {
-            for (Parameter parameter : method.getParameters()) {
-                boolean isNamePresent = parameter.isNamePresent();
-                String parameterName = parameter.getName();
-                boolean isImplicit = parameter.isImplicit();
-                boolean isSynthetic = parameter.isSynthetic();
+        for (var method : clazz.getDeclaredMethods()) {
+            for (var parameter : method.getParameters()) {
+                var isNamePresent = parameter.isNamePresent();
+                var parameterName = parameter.getName();
+                var isImplicit = parameter.isImplicit();
+                var isSynthetic = parameter.isSynthetic();
             }
         }
     }
